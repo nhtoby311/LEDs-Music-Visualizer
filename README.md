@@ -13,6 +13,6 @@ LEDs Music Visualizer system consists of Arduino and Seven Band Graphic Equalize
 3. Connect Arduino to the computer with USB cable
 4. Adjust the pins values, in this case, A0 = audio, D2 = Strobe, D3 = reset and LED_PIN = 6
 5. Upload the code 
-6. Voilà!
+6. **_Voilà!_**
 --------------------------------
 **ATTENTION**: If you smelt something's burned, it would probably too late! Throw everything away, grab some beers, rethink about your life, then buy the whole stuffs and start all over again.
