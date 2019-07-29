@@ -4,7 +4,7 @@
 // LED LIGHTING SETUP
 #define LED_PIN     6
 #define NUM_LEDS    60 
-#define BRIGHTNESS  100 // max 255
+#define BRIGHTNESS  80 // max 255
 #define LED_TYPE    NEOPIXEL
 
 CRGB leds[NUM_LEDS];
@@ -15,7 +15,7 @@ int audio = 0;
 int spectrumValue[7];
 int band;
 int audio_input = 0;
-int freq = 0;
+int freq = 1;
 
 // STANDARD VISUALIZER VARIABLES
 int midway = NUM_LEDS / 2; // CENTER MARK FROM DOUBLE LEVEL VISUALIZER
@@ -28,7 +28,7 @@ long react = 0; // NUMBER OF LEDs BEING LIT
 long post_react = 0; // OLD SPIKE CONVERSION
 
 // RAINBOW WAVE SETTINGS
-int wheel_speed = 2;
+int wheel_speed = 1;
 
 void setup()
 {
@@ -51,7 +51,8 @@ void setup()
   FastLED.show();
 
   // SERIAL AND INPUT SETUP
-  Serial.begin(115200);
+  //Serial.begin(115200);
+  Serial.begin(19200);
   Serial.println("\nListening...");
 }
 
@@ -71,8 +72,8 @@ CRGB Scroll(int pos) {
     color.g = 255 - color.b;
     color.r = 1;
   }
-  /*
-  Serial.print(pos);
+  
+  /*Serial.print(pos);
   Serial.print(" -> ");
   Serial.print("r: ");
   Serial.print(color.r);
@@ -125,8 +126,27 @@ void readMSGEQ7()
     digitalWrite(strobe, LOW); // strobe pin on the shield - kicks the IC up to the next band 
     delayMicroseconds(30); // 
     spectrumValue[band] = analogRead(audio); // store band reading
+/*
+    if (spectrumValue[band] < 10)                          //read stuffs
+ {
+ Serial.print(" ");
+ Serial.print(spectrumValue[band]);
+ }
+ else if (spectrumValue[band] < 100 )
+ {
+ Serial.print(" ");
+ Serial.print(spectrumValue[band]);
+ }
+ else
+ {
+ Serial.print(" ");
+ Serial.print(spectrumValue[band]);
+ }
+*/                                                    //end here
+    
     digitalWrite(strobe, HIGH); 
   }
+   //Serial.println();
 }
 
 void convertSingle()
@@ -140,9 +160,9 @@ void convertSingle()
     if (pre_react > react) // ONLY ADJUST LEVEL OF LED IF LEVEL HIGHER THAN CURRENT LEVEL
       react = pre_react;
 
-    Serial.print(audio_input);
+    /*Serial.print(audio_input);
     Serial.print(" -> ");
-    Serial.println(pre_react);
+    Serial.println(pre_react);*/
   }
 }
 
@@ -150,16 +170,16 @@ void convertDouble()
 {
     audio_input = spectrumValue[freq];
 
-  if (audio_input > 80)
+  if (audio_input > 80)               // if :on
   {
     pre_react = ((long)midway * (long)audio_input) / 1023L; // TRANSLATE AUDIO LEVEL TO NUMBER OF LEDs
 
     if (pre_react > react) // ONLY ADJUST LEVEL OF LED IF LEVEL HIGHER THAN CURRENT LEVEL
       react = pre_react;
 
-    Serial.print(audio_input);
+    /*Serial.print(audio_input);
     Serial.print(" -> ");
-    Serial.println(pre_react);
+    Serial.println(pre_react);*/
   }
 }
 
@@ -213,5 +233,5 @@ void loop()
 {  
   //singleLevel();
   doubleLevel();
-  //delay(1);
+  //delay(10);
 }
