@@ -1,7 +1,7 @@
 # LEDs-Music-Visualizer
 ----------------------------------------
 # Intro
-LEDs Music Visualizer system consists of Arduino and Seven Band Graphic Equalizer - MSGEQ7 which able to input the sound, then illustrates the audio spectrum through the LEDs strips. 
+LEDs Music Visualizer system consists of Arduino and Seven Band Graphic Equalizer - MSGEQ7 which is able to illustrates the audio spectrum from the input sound through the LEDs strips. 
 
 ## Ingredients
   - Arduino UNO
