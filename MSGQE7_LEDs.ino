@@ -21,7 +21,7 @@ int freq = 1;
 int midway = NUM_LEDS / 2; // CENTER MARK FROM DOUBLE LEVEL VISUALIZER
 int loop_max = 0;
 int k = 255; // COLOR WHEEL POSITION
-int decay = 0; // HOW MANY MS BEFORE ONE LIGHT DECAY
+int decay = 4; // HOW MANY MS BEFORE ONE LIGHT DECAY
 int decay_check = 0;
 long pre_react = 0; // NEW SPIKE CONVERSION
 long react = 0; // NUMBER OF LEDs BEING LIT
@@ -52,7 +52,7 @@ void setup()
 
   // SERIAL AND INPUT SETUP
   //Serial.begin(115200);
-  Serial.begin(19200);
+  Serial.begin(9600);
   Serial.println("\nListening...");
 }
 
@@ -224,8 +224,9 @@ void doubleLevel()
   if (decay_check > decay)
   {
     decay_check = 0;
-    if (react > 0)
+    if (react > 0){
       react--;
+    }
   }
 }
 
@@ -233,5 +234,5 @@ void loop()
 {  
   //singleLevel();
   doubleLevel();
-  //delay(10);
+  //delayMicroseconds(10);
 }
