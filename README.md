@@ -17,4 +17,4 @@ LEDs Music Visualizer system consists of Arduino and Seven Band Graphic Equalize
 5. Upload the code 
 6. **_Voilà!_**
 --------------------------------
-**ATTENTION**: If you smelt something's burned, it would probably too late! Throw everything away, grab some beers, rethink about your life, then buy the whole stuffs and start all over again.
+**ATTENTION**: If you smelt something's burned, it would probably too late! Throw everything away, realize you just waste ~20$, rethink about your life decisions, then buy the whole stuffs and start all over again.
