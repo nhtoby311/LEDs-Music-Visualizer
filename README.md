@@ -11,7 +11,7 @@ LEDs Music Visualizer system consists of Arduino and Seven Band Graphic Equalize
 
 ## Procedures
 1. Follow the circuit schematic 
-2. The values of capacitors and resistors are based on **_J Skoba_** diagram for MSGEQ7
+2. The values of capacitors and resistors are based on [J Skoba](http://nuewire.com/info-archive/msgeq7-by-j-skoba/) diagram for MSGEQ7
 3. Connect Arduino to the computer with USB cable
 4. Adjust the pins values, in this case, A0 = audio, D2 = Strobe, D3 = reset and LED_PIN = 6
 5. Upload the code 
