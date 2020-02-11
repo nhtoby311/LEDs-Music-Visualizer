@@ -15,13 +15,13 @@ int audio = 0;
 int spectrumValue[7];
 int band;
 int audio_input = 0;
-int freq = 1;
+int freq = 1;                 //Which band is used
 
 // STANDARD VISUALIZER VARIABLES
 int midway = NUM_LEDS / 2; // CENTER MARK FROM DOUBLE LEVEL VISUALIZER
 int loop_max = 0;
 int k = 255; // COLOR WHEEL POSITION
-int decay = 4; // HOW MANY MS BEFORE ONE LIGHT DECAY
+int decay = 1; // HOW MANY MS BEFORE ONE LIGHT DECAY
 int decay_check = 0;
 long pre_react = 0; // NEW SPIKE CONVERSION
 long react = 0; // NUMBER OF LEDs BEING LIT
@@ -126,7 +126,7 @@ void readMSGEQ7()
     digitalWrite(strobe, LOW); // strobe pin on the shield - kicks the IC up to the next band 
     delayMicroseconds(30); // 
     spectrumValue[band] = analogRead(audio); // store band reading
-/*
+
     if (spectrumValue[band] < 10)                          //read stuffs
  {
  Serial.print(" ");
@@ -142,11 +142,11 @@ void readMSGEQ7()
  Serial.print(" ");
  Serial.print(spectrumValue[band]);
  }
-*/                                                    //end here
+                                                  //end here
     
     digitalWrite(strobe, HIGH); 
   }
-   //Serial.println();
+   Serial.println();
 }
 
 void convertSingle()
@@ -170,7 +170,7 @@ void convertDouble()
 {
     audio_input = spectrumValue[freq];
 
-  if (audio_input > 80)               // if :on
+  if (audio_input > 80 && freq == 0)               // if :on for 0th band
   {
     pre_react = ((long)midway * (long)audio_input) / 1023L; // TRANSLATE AUDIO LEVEL TO NUMBER OF LEDs
 
@@ -181,6 +181,16 @@ void convertDouble()
     Serial.print(" -> ");
     Serial.println(pre_react);*/
   }
+  
+   if (audio_input > 130 && freq == 1)               // if :on for 1st band
+  {
+    pre_react = ((long)midway * (long)audio_input) / 1023L; // TRANSLATE AUDIO LEVEL TO NUMBER OF LEDs
+
+    if (pre_react > react) // ONLY ADJUST LEVEL OF LED IF LEVEL HIGHER THAN CURRENT LEVEL
+      react = pre_react;
+
+  }
+  
 }
 
 // FUNCTION TO VISUALIZE WITH A SINGLE LEVEL
