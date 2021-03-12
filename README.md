@@ -3,7 +3,7 @@
 # Intro
 LEDs Music Visualizer system consists of Arduino and Seven Band Graphic Equalizer - MSGEQ7 which is able to illustrates the audio spectrum from the input sound through the LEDs strips. 
 
-![Uzoma Medium Gif](https://user-images.githubusercontent.com/33858127/88416966-1e53ca00-cdaf-11ea-82f8-f8b90949ac73.gif)
+![Uzoma Medium Gif](https://imgur.com/e5oOZu0)
 
 ## Ingredients
   - Arduino UNO
