@@ -19,7 +19,7 @@ LEDs Music Visualizer system consists of Arduino and Seven Band Graphic Equalize
 5. Upload the code 
 6. **_Voilà!_**
 --------------------------------
-![IMG](https://github.com/nvminhhieu/LEDs-Music-Visualizer/blob/master/Schematic.jpg =250x)
+![IMG](https://github.com/nvminhhieu/LEDs-Music-Visualizer/blob/master/Schematic.jpg){:height="200px" width="200px"}
 **ATTENTION**: If you smelt something's burned, it would probably too late! Throw everything away, realize you just waste ~20$, rethink about your life decisions, then buy the whole stuffs and start all over again.
 
 **Note**: Add 22k resistor between the Audio In (one that goes to MSGEQ7) and the capacitor (10nF) 
